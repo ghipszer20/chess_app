@@ -6,7 +6,7 @@ class WhiteKing:
     def get_name(self):
         return self.name
 
-    def has_moved(self):
+    def get_has_moved(self):
         return self.has_moved
 
     def move_toggle(self):
@@ -21,7 +21,7 @@ class BlackKing:
     def get_name(self):
         return self.name
 
-    def has_moved(self):
+    def get_has_moved(self):
         return self.has_moved
 
     def move_toggle(self):
@@ -61,7 +61,7 @@ class WhiteRook:
     def get_name(self):
         return self.name
 
-    def has_moved(self):
+    def get_has_moved(self):
         return self.has_moved
 
     def move_toggle(self):
@@ -80,7 +80,7 @@ class BlackRook:
     def get_name(self):
         return self.name
 
-    def has_moved(self):
+    def get_has_moved(self):
         return self.has_moved
 
     def move_toggle(self):
@@ -92,7 +92,7 @@ class BlackRook:
 
 class WhiteBishop:
     def __init__(self):
-        self.name = "bB"
+        self.name = "wB"
         self.value = 3
 
     def get_name(self):
@@ -137,9 +137,10 @@ class BlackKnight:
     def get_value(self):
         return self.value
 
+
 class WhitePawn:
     def __init__(self):
-        self.name = "bP"
+        self.name = "wP"
         self.value = 1
 
     def get_name(self):
@@ -151,7 +152,7 @@ class WhitePawn:
 
 class BlackPawn:
     def __init__(self):
-        self.name = "wP"
+        self.name = "bP"
         self.value = 1
 
     def get_name(self):
@@ -159,3 +160,4 @@ class BlackPawn:
 
     def get_value(self):
         return self.value
+
