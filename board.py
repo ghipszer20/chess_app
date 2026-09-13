@@ -1,37 +1,13 @@
-from pieces import WhiteKing, WhiteQueen, WhiteRook, WhiteBishop, WhiteKnight, WhitePawn
-from pieces import BlackKing, BlackQueen, BlackRook, BlackBishop, BlackKnight, BlackPawn
+import pieces as pcs
+import data as dta
+
 
 class Board:
     def __init__(self):
-        self.board = [[0] * 8 for _ in range(8)]
+        self.board = [[dta.EMPTY] * 8 for _ in range(8)]
 
-        self.white_pieces_map = {
-            "wP" : [(6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6), (6, 7)],
-            "wN": [(7, 1), (7, 6)],
-            "wB": [(7, 2), (7, 5)],
-            "wR": [(7, 0), (7, 7)],
-            "wQ": [(7, 3)],
-            "wK": [(7, 4)]
-        }
-        self.black_pieces_map = {
-            "wP": [(1, 0), (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7)],
-            "bN": [(0, 1), (0, 6)],
-            "bB": [(0, 2), (0, 5)],
-            "bR": [(0, 0), (0, 7)],
-            "bQ": [(0, 3)],
-            "bK": [(0, 4)]
-        }
-
-    def get_white_pieces_map(self):
-        return self.white_pieces_map
-
-    def get_black_pieces_map(self):
-        return self.black_pieces_map
-
-
-    def get_square(self, x_val: int, y_val: int) -> str:
+    def get_square(self, x_val: int, y_val: int):
         return self.board[x_val][y_val]
-
 
     def set_square(self, rep, x_val: int, y_val: int):
         self.board[x_val][y_val] = rep
@@ -40,29 +16,29 @@ class Board:
     def piece(col: str):
         match col:
             case "wP":
-                return WhitePawn()
+                return pcs.WhitePawn()
             case "bP":
-                return BlackPawn()
+                return pcs.BlackPawn()
             case "wB":
-                return WhiteBishop()
+                return pcs.WhiteBishop()
             case "bB":
-                return BlackBishop()
+                return pcs.BlackBishop()
             case "wN":
-                return WhiteKnight()
+                return pcs.WhiteKnight()
             case "bN":
-                return BlackKnight()
+                return pcs.BlackKnight()
             case "wR":
-                return WhiteRook()
+                return pcs.WhiteRook()
             case "bR":
-                return BlackRook()
+                return pcs.BlackRook()
             case "wQ":
-                return WhiteQueen()
+                return pcs.WhiteQueen()
             case "bQ":
-                return BlackQueen()
+                return pcs.BlackQueen()
             case "wK":
-                return WhiteKing()
+                return pcs.WhiteKing()
             case "bK":
-                return BlackKing()
+                return pcs.BlackKing()
 
         return None
 
@@ -71,23 +47,22 @@ class Board:
             print(8 - i, end=": ")
 
             for j, col in enumerate(row):
-                if col == "  ":
-                    print("  ", end = " ")
+                if col == dta.EMPTY:
+                    print("  ", end=" ")
                 else:
-                    print(col.get_name(), end = " ")
+                    print(col.get_name(), end=" ")
 
             print("")
 
         print("    a  b  c  d  e  f  g  h")
 
-
     def put_pieces(self):
-        for piece_name, squares in self.white_pieces_map.items():
+        for piece_name, squares in dta.get_white_pieces_map().items():
             for square in squares:
                 x, y = square[0], square[1]
                 self.board[x][y] = self.piece(piece_name)
 
-        for piece_name, squares in self.black_pieces_map.items():
+        for piece_name, squares in dta.black_pieces_map.items():
             for square in squares:
                 x, y = square[0], square[1]
                 self.board[x][y] = self.piece(piece_name)
